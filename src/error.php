@@ -22,6 +22,7 @@
     }
 
     .thingy-center-content {
+        padding: auto;
         align-content: center;
     }
     </style>
