@@ -11,7 +11,12 @@
           rel="stylesheet"
           integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
           crossorigin="anonymous">
-    <link rel="stylesheet" href="assets/custom.css">
+    <style>
+    .thingy-center {
+        margin: auto;
+        text-align: center;
+    }
+    </style>
 </head>
 <body>
     <?php
@@ -20,7 +25,11 @@
     ?>
     <div class="container">
         <div class="row">
-            <h2>Error <?=$status_code?></h2>
+            <h2 class="thingy-center">
+                <?php
+                echo 'Error:' . $status_code;
+                ?>
+            </h2>
         </div>
         <div class="row">
             <div class="col-md-12">
