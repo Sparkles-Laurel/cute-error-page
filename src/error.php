@@ -20,6 +20,10 @@
         margin: auto;
         text-align: center;
     }
+
+    .thingy-center-content {
+        align-content: center;
+    }
     </style>
 </head>
 <body>
@@ -32,7 +36,7 @@
             </h2>
         </div>
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12 thingy-center-content">
                 <img src="<?= $http_cat_pic ?>" alt="Error Image" class="img-fluid thingy-center">    
             </div>
         </div>
