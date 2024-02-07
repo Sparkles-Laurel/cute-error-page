@@ -11,15 +11,22 @@
           rel="stylesheet"
           integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
           crossorigin="anonymous">
-        
+    <link rel="stylesheet" href="assets/custom.css">
 </head>
 <body>
-<?php
-    $errorCode = $_ENV["SERVER_REDIRECT_STATUS"];
-    echo '<img src="https://http.cat/'. $errorCode .'.jpg"/>'
-?>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" 
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-        crossorigin="anonymous"></script>
+    <?php
+    $status_code = $_GET['code'];
+    $http_cat_pic = 'https://http.cat/'.$status_code.'.jpg';
+    ?>
+    <div class="container">
+        <div class="row">
+            <h2>Error <?=$status_code?></h2>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <img src="<?= $http_cat_pic ?>" alt="Error Image" class="img-fluid thingy-center">    
+            </div>
+        </div>
+    </div>
 </body>
 </html>
