@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <?php
+    $status_code = $_GET['code'];
+    $http_cat_pic = 'https://http.cat/'.$status_code.'.jpg';
+    ?>
     <!-- print HTTP error code here -->
     <!-- in this format: Error {code} -->
-    <title> Error: <?= $_ENV["SERVER_REDIRECT_STATUS"]?> </title>
+    <title> Error: <?php echo $status_code; ?> </title>
     <!-- add meta tags here -->
 
     <!-- end meta tags here -->
@@ -19,11 +23,7 @@
     </style>
 </head>
 <body>
-    <?php
-    $status_code = $_GET['code'];
-    $http_cat_pic = 'https://http.cat/'.$status_code.'.jpg';
-    ?>
-    <div class="container">
+   <div class="container">
         <div class="row">
             <h2 class="thingy-center">
                 <?php
