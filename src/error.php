@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html data-bs-theme="dark">
 <head>
     <?php
     $status_code = $_GET['code'];
@@ -15,6 +15,8 @@
           rel="stylesheet"
           integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
           crossorigin="anonymous">
+    <link rel="stylesheet" href="https://yigitovski.com/assets/fonts/font-declaration.css">
+
     <style>
     .thingy-center {
         margin: auto;
@@ -25,12 +27,16 @@
         padding: auto;
         align-content: center;
     }
+
+    .thingy-opendyslexic {
+        font-family: 'OpenDyslexic Regular';
+    }
     </style>
 </head>
-<body>
+<body class="bs-dark">
    <div class="container">
         <div class="row">
-            <h2 class="thingy-center">
+            <h2 class="thingy-center thingy-opendyslexic">
                 <?php
                 echo 'Error:' . $status_code;
                 ?>

@@ -1,0 +1,19 @@
+@font-face {
+    font-family: 'OpenDyslexic Regular';
+    src: url(https://yigitovski.com/assets/fonts/OpenDyslexic-Regular.woff2);
+}
+
+@font-face {
+    font-family: 'OpenDyslexic Bold';
+    src: url(https://yigitovski.com/assets/fonts/OpenDyslexic-Bold.woff2);
+}
+
+@font-face {
+    font-family: 'OpenDyslexic Italic';
+    src: url(https://yigitovski.com/assets/fonts/OpenDyslexic-Italic.woff2);
+}
+
+@font-face {
+    font-family: 'OpenDyslexic Bold Italic';
+    src: url(https://yigitovski.com/assets/fonts/OpenDyslexic-Bold-Italic.woff2);
+}
