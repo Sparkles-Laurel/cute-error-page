@@ -101,6 +101,12 @@
                 <img src="<?= $http_cat_pic ?>" alt="Error Image" class="img-fluid smaller-image">    
             </div>
         </div>
-          </div>
+    </div>
+    <footer class="footer mt-auto py-3 bg-dark">
+        <div class="container">
+            <div class="text-muted">
+                <span>Liked this? It's <a href="https://github.com/SparkySimp/cute-error-page">open source</a>!</span>
+            </div>
+        </div>
 </body>
 </html>
