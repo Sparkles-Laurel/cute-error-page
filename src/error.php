@@ -3,6 +3,14 @@
 <head>
     <?php
     $status_code = $_GET['code'];
+
+    // Before we proceed, sanitize the input
+    if (!is_numeric($status_code)) {
+        // if the input is not a number, redirect to the 404 page
+        header('Location: /error.php?code=404');
+        exit;
+    }
+
     $http_cat_pic = 'https://http.cat/'.$status_code.'.jpg';
 
     // user-friendly, long error descriptions
@@ -25,16 +33,17 @@
 
     ?>
     <!-- print HTTP error code here -->
-    <!-- in this format: Error {code} -->
     <title> Error: <?php echo $status_code; ?> </title>
     <!-- add meta tags here -->
 
+    <meta name="description" content="Error <?php echo $status_code; ?>: <?php echo $errorDescriptions[$status_code]; ?>">
+    <meta name="keywords" content="error, <?php echo $status_code; ?>, <?php echo $errorDescriptions[$status_code]; ?>">
+    <meta name="author" content="Kıvılcım L. Özürk, Efi S. Öztürk, Y. Cemal Öztürk">
+
     <!-- end meta tags here -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-          rel="stylesheet"
-          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
-          crossorigin="anonymous">
-    <link rel="stylesheet" href="https://yigitovski.com/assets/fonts/font-declaration.css">
+    <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="assets/fonts/font-declaration.css">
 
     <style>
     .thingy-center {
