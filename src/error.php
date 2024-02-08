@@ -104,8 +104,10 @@
     </div>
     <footer class="footer mt-auto py-3 bg-dark">
         <div class="container">
-            <div class="text-muted">
-                <span>Liked this? It's <a href="https://github.com/SparkySimp/cute-error-page">open source</a>!</span>
+            <div class="row text-muted justify-content-center">
+                <div class="col-4 thingy-opendyslexic">
+                    Liked this? It's <a href="https://github.com/SparkySimp/cute-error-page" class="text-muted">open source</a>!
+                </div>
             </div>
         </div>
 </body>
