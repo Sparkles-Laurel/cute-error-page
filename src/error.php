@@ -15,6 +15,7 @@
 
     // user-friendly, long error descriptions
     $errorDescriptions = [
+        200 => 'The server has successfully fulfilled the request.',
         400 => 'The server could not understand the request due to invalid syntax. Please check your request and try again.',
         401 => 'The server could not verify that you are authorized to access the requested resource. Please check your credentials and try again.',
         402 => 'The server received a payment required response. Please check your payment details and try again.',
