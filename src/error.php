@@ -52,9 +52,20 @@
     }
 
     p.thingy-opendyslexic {
-        font-size: 1.5em;
+        font-size: 1.15em;
     }
     </style>
+    <script>
+        // if the user uses light mode, adjust the body accordingly,
+        // and vice versa
+        if (localStorage.getItem('theme') === 'light') {
+            document.body.classList.remove('bs-dark');
+            document.body.classList.add('bs-light');
+        } else if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.remove('bs-light');
+            document.body.classList.add('bs-dark');
+        }
+    </script>
 </head>
 <body class="bs-dark">
    <div class="container">
@@ -66,13 +77,8 @@
                 ?>
             </h2>
             </div>
-       </div>
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <img src="<?= $http_cat_pic ?>" alt="Error Image" class="img-fluid">    
-            </div>
-        </div>
-        <div class="row justify-content-center">
+       </div>  
+       <div class="row justify-content-center">
             <div class="col-md-8">
                 <p class="thingy-opendyslexic text-center">
                     <?php
@@ -81,6 +87,11 @@
                 </p>
             </div>
         </div>
-    </div>
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <img src="<?= $http_cat_pic ?>" alt="Error Image" class="img-fluid smaller-image">    
+            </div>
+        </div>
+          </div>
 </body>
 </html>
