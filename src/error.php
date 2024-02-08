@@ -57,6 +57,12 @@
         511 => 'The server is refusing to service the request because it requires network authentication. Please check your request and try again.'
     ];
 
+    // if the error code is not in the array, redirect to the 404 page
+    if (!array_key_exists($status_code, $errorDescriptions)) {
+        header('Location: /error.php?code=404');
+        exit;
+    }
+
     ?>
     <!-- print HTTP error code here -->
     <title> Error: <?php echo $status_code; ?> </title>
