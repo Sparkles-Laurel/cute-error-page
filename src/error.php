@@ -95,6 +95,10 @@
     p.thingy-opendyslexic {
         font-size: 1.15em;
     }
+
+    .thingy-footer {
+        font-size: 0.9em;
+    }
     </style>
     <script>
         // if the user uses light mode, adjust the body accordingly,
@@ -137,7 +141,7 @@
     <footer class="footer mt-auto py-3 bg-dark">
         <div class="container">
             <div class="row text-muted justify-content-center">
-                <div class="col-4 thingy-opendyslexic">
+                <div class="col-4 text-center thingy-footer thingy-opendyslexic">
                     Liked this? It's <a href="https://github.com/SparkySimp/cute-error-page" class="text-muted">open source</a>!
                 </div>
             </div>
