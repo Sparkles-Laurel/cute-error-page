@@ -38,7 +38,7 @@
 
     <meta name="description" content="Error <?php echo $status_code; ?>: <?php echo $errorDescriptions[$status_code]; ?>">
     <meta name="keywords" content="error, <?php echo $status_code; ?>, <?php echo $errorDescriptions[$status_code]; ?>">
-    <meta name="author" content="Kıvılcım L. Özürk, Efi S. Öztürk, Y. Cemal Öztürk">
+    <meta name="author" content="Kıvılcım L. Öztürk, Efi S. Öztürk, Y. Cemal Öztürk">
 
     <!-- end meta tags here -->
     <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
