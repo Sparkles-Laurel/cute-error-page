@@ -25,7 +25,7 @@
 
     .thingy-center-content {
         padding: auto;
-        align-content: center;
+        /* align-content: center; */
     }
 
     .thingy-opendyslexic {
@@ -35,16 +35,18 @@
 </head>
 <body class="bs-dark">
    <div class="container">
-        <div class="row">
-            <h2 class="thingy-center thingy-opendyslexic">
+        <div class="row justify-content-center">
+            <div class="col-4">
+             <h2 class="thingy-opendyslexic text-center">
                 <?php
                 echo 'Error:' . $status_code;
                 ?>
             </h2>
-        </div>
-        <div class="row">
-            <div class="col-md-12 thingy-center-content">
-                <img src="<?= $http_cat_pic ?>" alt="Error Image" class="img-fluid thingy-center">    
+            </div>
+       </div>
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <img src="<?= $http_cat_pic ?>" alt="Error Image" class="img-fluid">    
             </div>
         </div>
     </div>
