@@ -145,7 +145,7 @@
             </div>
         </div>
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div class="col-md-8 justify-content-center">
                 <img src="<?= $http_cat_pic ?>" alt="Error Image" class="img-fluid smaller-image">
             </div>
         </div>
