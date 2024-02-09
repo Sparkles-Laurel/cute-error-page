@@ -64,9 +64,9 @@
         511 => 'The server is refusing to service the request because it requires network authentication. Please check your request and try again.'
     ];
 
-    // if the error code is not in the array, redirect to the 404 page
+    // if the error code is not in the array, redirect to the 400 page
     if (!array_key_exists($status_code, $errorDescriptions)) {
-        header('Location: /error.php?code=404');
+        header('Location: /error.php?code=400');
         exit;
     }
 
@@ -130,7 +130,7 @@
             <div class="col-4">
                 <h2 class="thingy-opendyslexic text-center">
                     <?php
-                    echo 'Error:' . $status_code;
+                    echo 'Error: ' . $status_code;
                     ?>
                 </h2>
             </div>
