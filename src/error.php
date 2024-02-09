@@ -1,17 +1,23 @@
 <!DOCTYPE html>
 <html data-bs-theme="dark">
+
 <head>
     <?php
     $status_code = $_GET['code'];
 
     // Before we proceed, sanitize the input
     if (!is_numeric($status_code)) {
-        // if the input is not a number, redirect to the 404 page
-        header('Location: /error.php?code=404');
+        // if the input is not a number, redirect to the 400 page
+        header('Location: /error.php?code=400');
         exit;
     }
 
-    $http_cat_pic = 'https://http.cat/'.$status_code.'.jpg';
+    // if any parameter other than 'code' is specified, redirect to the 400 page
+    if (count($_GET) > 1 || !isset($_GET['code'])) {
+        header('Location: /error.php?code=400');
+        exit;
+    }
+    $http_cat_pic = 'https://http.cat/' . $status_code . '.jpg';
 
     // user-friendly, long error descriptions
     $errorDescriptions = [
@@ -64,42 +70,46 @@
         exit;
     }
 
+
     ?>
     <!-- print HTTP error code here -->
-    <title> Error: <?php echo $status_code; ?> </title>
+    <title> Error:
+        <?php echo $status_code; ?>
+    </title>
     <!-- add meta tags here -->
 
-    <meta name="description" content="Error <?php echo $status_code; ?>: <?php echo $errorDescriptions[$status_code]; ?>">
+    <meta name="description"
+        content="Error <?php echo $status_code; ?>: <?php echo $errorDescriptions[$status_code]; ?>">
     <meta name="keywords" content="error, <?php echo $status_code; ?>, <?php echo $errorDescriptions[$status_code]; ?>">
     <meta name="author" content="Kıvılcım L. Öztürk, Efi S. Öztürk, Y. Cemal Öztürk">
 
     <!-- end meta tags here -->
     <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    
+
     <link rel="stylesheet" href="assets/fonts/font-declaration.css">
 
     <style>
-    .thingy-center {
-        margin: auto;
-        text-align: center;
-    }
+        .thingy-center {
+            margin: auto;
+            text-align: center;
+        }
 
-    .thingy-center-content {
-        padding: auto;
-        /* align-content: center; */
-    }
+        .thingy-center-content {
+            padding: auto;
+            /* align-content: center; */
+        }
 
-    .thingy-opendyslexic {
-        font-family: 'OpenDyslexic Regular';
-    }
+        .thingy-opendyslexic {
+            font-family: 'OpenDyslexic Regular';
+        }
 
-    p.thingy-opendyslexic {
-        font-size: 1.15em;
-    }
+        p.thingy-opendyslexic {
+            font-size: 1.15em;
+        }
 
-    .thingy-footer {
-        font-size: 0.9em;
-    }
+        .thingy-footer {
+            font-size: 0.9em;
+        }
     </style>
     <script>
         // if the user uses light mode, adjust the body accordingly,
@@ -113,18 +123,19 @@
         }
     </script>
 </head>
+
 <body class="bs-dark">
-   <div class="container">
+    <div class="container">
         <div class="row justify-content-center">
             <div class="col-4">
-             <h2 class="thingy-opendyslexic text-center">
-                <?php
-                echo 'Error:' . $status_code;
-                ?>
-            </h2>
+                <h2 class="thingy-opendyslexic text-center">
+                    <?php
+                    echo 'Error:' . $status_code;
+                    ?>
+                </h2>
             </div>
-       </div>  
-       <div class="row justify-content-center">
+        </div>
+        <div class="row justify-content-center">
             <div class="col-md-8">
                 <p class="thingy-opendyslexic text-center">
                     <?php
@@ -135,7 +146,7 @@
         </div>
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <img src="<?= $http_cat_pic ?>" alt="Error Image" class="img-fluid smaller-image">    
+                <img src="<?= $http_cat_pic ?>" alt="Error Image" class="img-fluid smaller-image">
             </div>
         </div>
     </div>
@@ -143,9 +154,11 @@
         <div class="container">
             <div class="row text-muted justify-content-center">
                 <div class="col-4 text-center thingy-footer thingy-opendyslexic">
-                    Liked this? It's <a href="https://github.com/SparkySimp/cute-error-page" class="text-muted">open source</a>!
+                    Liked this? It's <a href="https://github.com/SparkySimp/cute-error-page" class="text-muted">open
+                        source</a>!
                 </div>
             </div>
         </div>
 </body>
+
 </html>
