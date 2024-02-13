@@ -165,6 +165,6 @@
         </div>
 </body>
 <?php
-    http_response_code(int($status_code));
+    http_response_code($status_code);
 ?>
 </html>
