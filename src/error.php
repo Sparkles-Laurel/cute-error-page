@@ -3,23 +3,10 @@
 
 <head>
     <?php
+
     $status_code = $_GET['code'];
+    global $errorDescriptions;
 
-    // Before we proceed, sanitize the input
-    if (!is_numeric($status_code)) {
-        // if the input is not a number, redirect to the 400 page
-        header('Location: /error.php?code=400');
-        exit;
-    }
-
-    // if any parameter other than 'code' is specified, redirect to the 400 page
-    if (count($_GET) > 1 || !isset($_GET['code'])) {
-        header('Location: /error.php?code=400');
-        exit;
-    }
-    $http_cat_pic = 'https://http.cat/' . $status_code . '.jpg';
-
-    // user-friendly, long error descriptions
     $errorDescriptions = [
         200 => 'The server has successfully fulfilled the request.',
         400 => 'The server could not understand the request due to invalid syntax. Please check your request and try again.',
@@ -64,13 +51,63 @@
         511 => 'The server is refusing to service the request because it requires network authentication. Please check your request and try again.'
     ];
 
-    // if the error code is not in the array, redirect to the 400 page
-    if (!array_key_exists($status_code, $errorDescriptions)) {
-        header('Location: /error.php?code=400');
-        exit;
+    /// sanitizes raw input text
+    function sanitize_input($input)
+    {
+        $input = trim($input);
+        $input = stripslashes($input);
+        $input = htmlspecialchars($input);
+        return $input;
     }
+    
+    /// sanitizes the status code
+    function sanitize_status_code($n)
+    {
+        // A list of the status codes
+        // this error page responds to.
 
+        $acceptedStatusCodes = [
+            200, 400, 401, 402, 
+            403, 404, 405, 406,
+            407, 408, 409, 410,
+            411, 412, 413, 414,
+            415, 416, 417, 418,
+            421, 422, 423, 424,
+            425, 426, 428, 429,
+            431, 451, 500, 501,
+            502, 503, 504, 505,
+            506, 507, 508, 510, 511 ];
+        
+        // sanitize the error code
+        $n = sanitize_input($n);
+    
+        if (!is_numeric($n)) {
+            // if the input is not a number, redirect to the 400 page
+            header('Location: /error.php?code=400');
+            exit;
+        }
 
+        // if any parameter other than 'code' is specified, redirect to the 400 page
+        if (count($_GET) > 1 || !isset($_GET['code'])) {
+            header('Location: /error.php?code=400');
+            exit;
+        }
+        // if the status code is not in the list of
+        // the status code this server responds to,
+        // redirect to the 400 page
+
+        if (!array_key_exists($n, $acceptedStatusCodes)) {
+            header('Location: /error.php?code=400');
+            exit;
+        }
+
+        return $n;
+    }
+    // Before we proceed, sanitize the input
+    
+    $status_code = sanitize_status_code($status_code);
+
+    $http_cat_pic = 'https://http.cat/' . $status_code . '.jpg';
     ?>
     <!-- print HTTP error code here -->
     <title> Error:
@@ -165,6 +202,7 @@
         </div>
 </body>
 <?php
-    http_response_code($status_code);
+http_response_code($status_code);
 ?>
+
 </html>
