@@ -59,54 +59,22 @@
         $input = htmlspecialchars($input);
         return $input;
     }
-    
-    /// sanitizes the status code
-    function sanitize_status_code($n)
-    {
-        // A list of the status codes
-        // this error page responds to.
-
-        $acceptedStatusCodes = [
-            200, 400, 401, 402, 
-            403, 404, 405, 406,
-            407, 408, 409, 410,
-            411, 412, 413, 414,
-            415, 416, 417, 418,
-            421, 422, 423, 424,
-            425, 426, 428, 429,
-            431, 451, 500, 501,
-            502, 503, 504, 505,
-            506, 507, 508, 510, 511 ];
-        
-        // sanitize the error code
-        $n = sanitize_input($n);
-    
-        if (!is_numeric($n)) {
-            // if the input is not a number, redirect to the 400 page
-            header('Location: /error.php?code=400');
-            exit;
-        }
-
-        // if any parameter other than 'code' is specified, redirect to the 400 page
-        if (count($_GET) > 1 || !isset($_GET['code'])) {
-            header('Location: /error.php?code=400');
-            exit;
-        }
-        // if the status code is not in the list of
-        // the status code this server responds to,
-        // redirect to the 400 page
-
-        if (!array_key_exists($n, $acceptedStatusCodes)) {
-            header('Location: /error.php?code=400');
-            exit;
-        }
-
-        return $n;
-    }
     // Before we proceed, sanitize the input
     
-    $status_code = sanitize_status_code($status_code);
-
+    $status_code = sanitize_input($status_code);
+    // if any parameter other than 'code' is specified, redirect to the 400 page
+    if (count($_GET) > 1 || !isset($_GET['code']) || !is_numeric($_GET['code'])) {
+        header('Location: /error.php?code=400');
+        exit;
+    }
+    // if the status code is not in the list of
+    // the status code this server responds to,
+    // redirect to the 400 page
+    
+    if (!array_key_exists($_GET['code'], $errorDescriptions)) {
+        header('Location: /error.php?code=400');
+        exit;
+    }
     $http_cat_pic = 'https://http.cat/' . $status_code . '.jpg';
     ?>
     <!-- print HTTP error code here -->
@@ -161,7 +129,7 @@
         } else if (localStorage.getItem('theme') === 'dark') {
             document.body.classList.remove('bs-light');
             document.body.classList.add('bs-dark');
-        }
+    }
     </script>
 </head>
 
