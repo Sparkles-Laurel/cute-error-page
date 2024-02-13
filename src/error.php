@@ -87,7 +87,7 @@
     <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <link rel="stylesheet" href="assets/fonts/font-declaration.css">
-
+    <link rel="shortcut icon" href="assets/img/fanart-cemal.ico" type="image/x-icon">
     <style>
         .thingy-center {
             margin: auto;
@@ -109,6 +109,10 @@
 
         .thingy-footer {
             font-size: 0.9em;
+        }
+
+        a:hover {
+            color: var(--text-muted);
         }
     </style>
     <script>
@@ -160,5 +164,7 @@
             </div>
         </div>
 </body>
-
+<?php
+    http_response_code(int($status_code));
+?>
 </html>
