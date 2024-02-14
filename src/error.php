@@ -65,6 +65,7 @@
     // if any parameter other than 'code' is specified, redirect to the 400 page
     if (count($_GET) > 1 || !isset($_GET['code']) || !is_numeric($_GET['code'])) {
         header('Location: /error.php?code=400');
+        http_response_code(308);
         exit;
     }
     // if the status code is not in the list of
@@ -73,6 +74,7 @@
     
     if (!array_key_exists($_GET['code'], $errorDescriptions)) {
         header('Location: /error.php?code=400');
+        http_response_code(308);
         exit;
     }
     $http_cat_pic = 'https://http.cat/' . $status_code . '.jpg';
