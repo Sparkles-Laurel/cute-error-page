@@ -124,14 +124,15 @@
     </style>
     <script>
         // if the user uses light mode, adjust the body accordingly,
-        // and vice versa
-        if (localStorage.getItem('theme') === 'light') {
-            document.body.classList.remove('bs-dark');
-            document.body.classList.add('bs-light');
-        } else if (localStorage.getItem('theme') === 'dark') {
-            document.body.classList.remove('bs-light');
-            document.body.classList.add('bs-dark');
-    }
+        // and vice versa. Check the `prefers-color-scheme` media
+        // query for that purpose
+        if(window.matchMedia('(prefers-color-scheme: light)').matches) {
+            document.body.classList.remove("bs-dark");
+            document.body.classList.add("bs-light");
+        } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.body.classList.remove("bs-light");
+            document.body.classList.add("bs-dark");
+        }
     </script>
 </head>
 
