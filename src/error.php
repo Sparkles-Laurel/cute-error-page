@@ -126,13 +126,13 @@
         // if the user uses light mode, adjust the body accordingly,
         // and vice versa. Check the `prefers-color-scheme` media
         // query for that purpose
-        if(window.matchMedia('(prefers-color-scheme: light)').matches) {
-            document.body.classList.remove("bs-dark");
-            document.body.classList.add("bs-light");
-        } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            document.body.classList.remove("bs-light");
-            document.body.classList.add("bs-dark");
-        }
+        document.addEventListener('DOMContentLoaded', (event) => {
+            if (window.matchMedia('(prefers-color-scheme: light)').matches) {
+                document.documentElement.setAttribute("data-bs-theme", "light");
+            } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.documentElement.setAttribute("data-bs-theme", "dark");
+            }
+        });
     </script>
 </head>
 
@@ -162,7 +162,7 @@
             </div>
         </div>
     </div>
-    <footer class="footer mt-auto py-3 bg-dark">
+    <footer class="footer mt-auto py-3">
         <div class="container">
             <div class="row text-muted justify-content-center">
                 <div class="col-4 text-center thingy-footer thingy-opendyslexic">
