@@ -123,16 +123,30 @@
         }
     </style>
     <script>
-        // if the user uses light mode, adjust the body accordingly,
-        // and vice versa. Check the `prefers-color-scheme` media
-        // query for that purpose
-        document.addEventListener('DOMContentLoaded', (event) => {
-            if (window.matchMedia('(prefers-color-scheme: light)').matches) {
-                document.documentElement.setAttribute("data-bs-theme", "light");
-            } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-                document.documentElement.setAttribute("data-bs-theme", "dark");
+        function setTheme(theme) {
+            document.documentElement.setAttribute('data-bs-theme', theme);
+            document.body.classList.remove('bs-light', 'bs-dark');
+            document.body.classList.add(theme === 'dark' ? 'bs-dark' : 'bs-light');
+        }
+
+        let autoTheme = (e) => {
+            if (e.matches) {
+                setTheme('dark');
+            } else {
+                setTheme('light');
             }
-        });
+        };
+
+        let darkMode = window.matchMedia('(prefers-color-scheme: dark)');
+        darkMode.addListener(autoTheme);
+        let lightMode = window.matchMedia('(prefers-color-scheme: light)');
+        lightMode.addListener(autoTheme);
+
+        if (darkMode.matches) {
+            setTheme('dark');
+        } else {
+            setTheme('light');
+        }
     </script>
 </head>
 
