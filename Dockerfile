@@ -10,6 +10,9 @@ COPY composer.json ./
 # Install PHP extensions required by the project
 RUN docker-php-ext-install pdo_mysql
 
+# Install Git
+RUN apt-get update && apt-get install -y git
+
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
@@ -28,6 +31,9 @@ RUN sed -ri -e 's!/var/www/!/var/www/html/public!g' /etc/apache2/apache2.conf /e
 
 # Enable Apache rewrite module
 RUN a2enmod rewrite
+
+# Allow connections from any host to the Apache server
+RUN sed -ri -e 's!Require local!Require all granted!g' /etc/apache2/sites-available/*.conf
 
 # Expose port 80
 EXPOSE 80
