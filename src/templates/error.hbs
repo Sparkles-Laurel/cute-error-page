@@ -10,6 +10,14 @@
         content="Error {{status_code}}: {{errorDescriptions[status_code]}}">
     <meta name="keywords" content="error, {{status_code}}, {{errorDescriptions[status_code]}}">
     <meta name="author" content="Kıvılcım L. Öztürk, Efi S. Öztürk, Y. Cemal Öztürk">
+    <!-- OpenGraph tags -->
+    <meta property="og:title" content="Error {{status_code}}">
+    <meta property="og:description" content="{{errorDescriptions[status_code]}}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{host_url}}">
+    <meta property="og:image" content="https://http.cat/{{status_code}}.jpg">
+    <meta property="og:site_name" content="Cute Error Page">
+    <meta property="og:locale" content="en_US">
 
     <!-- end meta tags here -->
     <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
