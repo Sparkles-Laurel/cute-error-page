@@ -1,0 +1,25 @@
+.thingy-center {
+    margin: auto;
+    text-align: center;
+}
+
+.thingy-center-content {
+    padding: auto;
+    /* align-content: center; */
+}
+
+.thingy-opendyslexic {
+    font-family: 'OpenDyslexic Regular';
+}
+
+p.thingy-opendyslexic {
+    font-size: 1.15em;
+}
+
+.thingy-footer {
+    font-size: 0.9em;
+}
+
+a:hover {
+    color: var(--text-muted);
+}

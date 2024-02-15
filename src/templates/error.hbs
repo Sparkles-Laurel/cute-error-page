@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html data-bs-theme="dark">
+
+<head>
+    <!-- print HTTP error code here -->
+    <title> Error: {{status_code}} </title>
+    <!-- add meta tags here -->
+
+    <meta name="description"
+        content="Error {{status_code}}: {{errorDescriptions[status_code]}}">
+    <meta name="keywords" content="error, {{status_code}}, {{errorDescriptions[status_code]}}">
+    <meta name="author" content="Kıvılcım L. Öztürk, Efi S. Öztürk, Y. Cemal Öztürk">
+
+    <!-- end meta tags here -->
+    <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="assets/fonts/font-declaration.css">
+    <link rel="shortcut icon" href="assets/img/fanart-cemal.ico" type="image/x-icon">
+    <link rel="stylesheet" href="assets/thingy/css/thingy.css">
+    <script src="assets/scripts/autotheme.js"></script>
+</head>
+
+<body class="bs-dark">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-4">
+                <h2 class="thingy-opendyslexic text-center">
+                    Error {{status_code}}
+                </h2>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <p class="thingy-opendyslexic text-center">
+                    {{errorDescriptions[status_code]}}
+                </p>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-8 justify-content-center">
+                <img src="https://http.cat/{{status_code}}.jpg" alt="Error Image" class="img-fluid smaller-image">
+            </div>
+        </div>
+    </div>
+    <footer class="footer mt-auto py-3">
+        <div class="container">
+            <div class="row text-muted justify-content-center">
+                <div class="col-4 text-center thingy-footer thingy-opendyslexic">
+                    Liked this? It's <a href="https://github.com/SparkySimp/cute-error-page" class="text-muted">open
+                        source</a>!
+                </div>
+            </div>
+        </div>
+</body>
+<?php
+http_response_code($status_code);
+?>
+
+</html>

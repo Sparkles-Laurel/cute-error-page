@@ -1,0 +1,13 @@
+{
+    "name": "sparkyisnyotcute/cute-error-page",
+    "description": "A cute error page package",
+    "type": "library",
+    "require": {
+        "salesforce/handlebars-php": "^1.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "CuteErrorPage\\": "src/"
+        }
+    }
+}
